@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content">
+                <table class="table scroll" *ngIf="!selected">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let i of attributeNames" scope="col">{{i| titlecase}}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let e of ExcelDetails">
+                        <tr>
+                            <td>{{e.id}}</td>
+                            <td>{{e.first_name}}</td>
+                            <td>{{e.last_name}}</td>
+                            <td>{{e.email}}</td>
+                            <td>{{e.gender}}</td>
+                            <td>{{e.ip_address}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-12" *ngIf="!exist">
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Entity</mat-label>
+                <mat-select>
+                    <mat-option (click)="selectEntity(e)" *ngFor="let e of entities" [value]="e">
+                        {{e.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+
+            <br>
+            <div class="card" *ngIf="selected">
+                <div class="card-body">
+                    <table class="table scroll">
+                        <thead>
+                            <tr>
+                                <th>destination</th>
+                                <th>source</th>
+                                
+
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let s of selectedEntity.attributes; let j=index  ">
+                            <tr *ngIf="j > 0">
+                                <td>{{s}}</td>
+                                <td><mat-form-field>
+
+                                        <mat-label>Attribute</mat-label>
+
+                                        <mat-select>
+                                            <mat-option (click)="getSelectedAttributeName(i,s)"
+                                                *ngFor="let a of attributeNames; let i=index" [value]="a">
+                                                <div>
+                                                    {{a | titlecase}}</div>
+
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field></td>
+
+
+                            </tr>
+                        </tbody>
+
+
+                    </table>
+
+                    <button mat-raised-button (click)="sendPerson()" color="primary">Add Data</button>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <br>
+
+
+
+
+</div>
+
+<div *ngIf="exist">
+    
+    <!-- <button (click)="selectedAttributesToExist()">test esss</button> -->
+
+    <p>This file is already saved in <b>{{historyFileInfos.entityName}}</b> table Wanna update?
+        <button mat-raised-button (click)="sendSavedParamPerson()" color="primary">Yes</button>
+        <button mat-raised-button (click)="existFalse()" color="basic">Add data to a new table</button>
+    </p>
+
+</div>

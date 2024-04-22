@@ -1,0 +1,11 @@
+.container{
+    margin-top: 20px;
+}
+button{
+    height: 55px !important;
+
+}
+
+mat-form-field{
+    margin-right: 10px;
+}

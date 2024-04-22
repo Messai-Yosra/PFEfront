@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 loginFeild">
+            <h3>Sign Up to <b>our Application</b> </h3>
+            <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Your username" formControlName="UserName" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>FullName</mat-label>
+                            <input matInput placeholder="Your FullName" formControlName="FullName" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-8">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput placeholder="Your Email" formControlName="Email" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>PhoneNumber</mat-label>
+                            <input matInput placeholder="Your PhoneNumber" formControlName="PhoneNumber" required>
+                        </mat-form-field>
+                    </div>
+                    <div formGroupName="Passwords">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput placeholder="Your Password" formControlName="Password"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>ConfirmPassword</mat-label>
+                            <input type="password" matInput placeholder="Confirm Your Password"
+                                formControlName="ConfirmPassword" required>
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <br>
+                        <button mat-raised-button color="primary" type="submit" class="w-100"
+                            [disabled]="!service.formModel.valid">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+            <div>
+                <br>
+                <a routerLink="/login">Login to our application</a>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            
+            <img src="assets/img/register.png" width="100%" height="100%" alt="">
+        </div>
+    </div>
+</div>
